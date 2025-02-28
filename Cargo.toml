@@ -1,0 +1,9 @@
+[package]
+name = "deltafall-clicker"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+colors-transform = "0.2.11"
+lerp = "0.5.0"
+macroquad = "0.4.13"
