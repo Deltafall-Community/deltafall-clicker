@@ -29,10 +29,18 @@ async fn render_bg_particles(texture: &Texture2D, particles: &mut Vec<ADeltafall
 async fn main() {
     
     let deltafall_logo = load_texture("deltafall.png").await.unwrap();
-    let clicking_sound : Sound = load_sound("click.ogg").await.unwrap();
+    let clicking_sound: Sound = load_sound("click.ogg").await.unwrap();
     let mut elapsed: f32 = 0.0;
-    let title_texts: [String; 6] = ["Deltafall Clicker".to_string (), "Click the Deltafall!".to_string (), "We love clicking the Deltafall".to_string (),
-    "Hell Yeah Click Deltafall".to_string (), "Wow clicking the Deltafall Amazing!".to_string (), "Deltafall by Hipxel clicking experience".to_string ()];
+    let title_texts: [String; 7] = [
+        "Deltafall Clicker".to_string (),
+         "Click the Deltafall!".to_string (),
+          "We love clicking the Deltafall".to_string (),
+    "Hell Yeah Click Deltafall".to_string (),
+     "Wow clicking the Deltafall Amazing!".to_string (),
+      "Deltafall by Hipxel clicking experience".to_string (),
+       "Delta...".to_string (),
+       "Deltaballin would approve".to_string ()
+       ];
     let mut current_title_index: usize = 0;
 
     let mut current_cookie_rotation: f32 = 0.0;
