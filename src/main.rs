@@ -31,7 +31,7 @@ async fn main() {
     let deltafall_logo = load_texture("deltafall.png").await.unwrap();
     let clicking_sound: Sound = load_sound("click.ogg").await.unwrap();
     let mut elapsed: f32 = 0.0;
-    let title_texts: [String; 7] = [
+    let title_texts: [String; 8] = [
         "Deltafall Clicker".to_string (),
          "Click the Deltafall!".to_string (),
           "We love clicking the Deltafall".to_string (),
