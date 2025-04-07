@@ -1,6 +1,6 @@
 use colors_transform::{Color, Hsl};
 use lerp::Lerp;
-use macroquad::{prelude::*, rand::RandomRange};
+use macroquad::{prelude::*, rand::RandomRange, audio::*};
 
 #[derive(Default, Debug)]
 struct ADeltafallLogo {
@@ -27,9 +27,9 @@ async fn render_bg_particles(texture: &Texture2D, particles: &mut Vec<ADeltafall
 
 #[macroquad::main("Deltafall Clicker")]
 async fn main() {
-
-    let deltafall_logo = load_texture("deltafall.png").await.unwrap();
     
+    let deltafall_logo = load_texture("deltafall.png").await.unwrap();
+    let clicking_sound : Sound = load_sound("click.mp3").await.unwrap();
     let mut elapsed: f32 = 0.0;
     let title_texts: [String; 6] = ["Deltafall Clicker".to_string (), "Click the Deltafall!".to_string (), "We love clicking the Deltafall".to_string (),
     "Hell Yeah Click Deltafall".to_string (), "Wow clicking the Deltafall Amazing!".to_string (), "Deltafall by Hipxel clicking experience".to_string ()];
@@ -43,6 +43,7 @@ async fn main() {
     let mut bg_particles: Vec<ADeltafallLogo> = Vec::new();
 
     loop {
+        let sndparams :PlaySoundParams = PlaySoundParams { looped: false, volume: 100.0 };
         elapsed += get_frame_time();
         let hsl_color = Hsl::from((elapsed / 8.0 % 1.0) * 360.0,10.0, 50.0);
         let color_rgba = macroquad::color::Color::from_rgba(hsl_color.get_red() as u8, hsl_color.get_green() as u8, hsl_color.get_blue() as u8, 255);
@@ -55,6 +56,7 @@ async fn main() {
         draw_texture_ex(&deltafall_logo, (screen_width() - drawparams.dest_size.unwrap().x) / 2.0, (screen_height() - drawparams.dest_size.unwrap().y) / 2.0, macroquad::color::WHITE, drawparams);
 
         if is_mouse_button_pressed(MouseButton::Left) {
+            play_sound(&clicking_sound, sndparams);
             current_cookie_to_rotation += 47.0;
             click_count += 1;
             

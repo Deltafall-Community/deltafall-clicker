@@ -6,4 +6,6 @@ edition = "2024"
 [dependencies]
 colors-transform = "0.2.11"
 lerp = "0.5.0"
-macroquad = "0.4.13"
+macroquad = {version = "0.4.13", features = ["audio"]}
+target = "2.1.0"
+wasm = "0.0.0"
