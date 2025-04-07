@@ -29,7 +29,7 @@ async fn render_bg_particles(texture: &Texture2D, particles: &mut Vec<ADeltafall
 async fn main() {
     
     let deltafall_logo = load_texture("deltafall.png").await.unwrap();
-    let clicking_sound : Sound = load_sound("click.mp3").await.unwrap();
+    let clicking_sound : Sound = load_sound("click.ogg").await.unwrap();
     let mut elapsed: f32 = 0.0;
     let title_texts: [String; 6] = ["Deltafall Clicker".to_string (), "Click the Deltafall!".to_string (), "We love clicking the Deltafall".to_string (),
     "Hell Yeah Click Deltafall".to_string (), "Wow clicking the Deltafall Amazing!".to_string (), "Deltafall by Hipxel clicking experience".to_string ()];
@@ -43,7 +43,7 @@ async fn main() {
     let mut bg_particles: Vec<ADeltafallLogo> = Vec::new();
 
     loop {
-        let sndparams :PlaySoundParams = PlaySoundParams { looped: false, volume: 100.0 };
+        let sndparams :PlaySoundParams = PlaySoundParams { looped: false, volume: 0.5 };
         elapsed += get_frame_time();
         let hsl_color = Hsl::from((elapsed / 8.0 % 1.0) * 360.0,10.0, 50.0);
         let color_rgba = macroquad::color::Color::from_rgba(hsl_color.get_red() as u8, hsl_color.get_green() as u8, hsl_color.get_blue() as u8, 255);
