@@ -51,7 +51,7 @@ async fn main() {
     let mut bg_particles: Vec<ADeltafallLogo> = Vec::new();
 
     loop {
-        let sndparams :PlaySoundParams = PlaySoundParams { looped: false, volume: 0.5 };
+        let sndparams :PlaySoundParams = PlaySoundParams { looped: false, volume: 0.1 };
         elapsed += get_frame_time();
         let hsl_color = Hsl::from((elapsed / 8.0 % 1.0) * 360.0,10.0, 50.0);
         let color_rgba = macroquad::color::Color::from_rgba(hsl_color.get_red() as u8, hsl_color.get_green() as u8, hsl_color.get_blue() as u8, 255);
